@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Belajar Mengeja</title>
+</head>
+
+<body>
+    <h1 class="judul">BELAJAR MENGEJA HURUF</h1>
+    <div class="container">
+        <div class="box">
+            <h1 onclick="showPopup('A')">A</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('B')">B</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('C')">C</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('D')">D</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('E')">E</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('F')">F</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('G')">G</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('H')">H</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('I')">I</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('J')">J</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('K')">K</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('L')">L</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('M')">M</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('N')">N</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('O')">O</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('P')">P</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('Q')">Q</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('R')">R</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('S')">S</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('T')">T</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('U')">U</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('V')">V</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('W')">W</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('X')">X</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('Y')">Y</h1>
+        </div>
+        <div class="box">
+            <h1 onclick="showPopup('Z')">Z</h1>
+        </div>
+    </div>
+    <div id="blurBackground" class="blur-background" style="display: none;"></div>
+
+    <div id="popup" style="display: none;" class="popup-container">
+        <span class="close-button" onclick="closePopup()">X</span>
+        <!-- <button class="nav-button-left" onclick="navigateLetter(-1)">&#8592;</button> -->
+        <form id="popupForm">
+            <h2 id="popupHeading"><span id="selectedLetter"></span></h2>
+            <img id="letterImage" src="" alt="Gambar">
+            <p id="nama"></p>
+            <audio id="audioElement" controls></audio>
+        </form>
+        <!-- <button class="nav-button-right" onclick="navigateLetter(1)">&#8594;</button> -->
+    </div>
+    
+
+    <script>
+        const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'];
+
+        function navigateLetter(direction) {
+            var currentLetter = document.getElementById("selectedLetter").textContent;
+            var currentIndex = letters.indexOf(currentLetter);
+            var nextIndex = currentIndex + direction;
+
+            // Pastikan indeks berada dalam range yang valid
+            if (nextIndex < 0) nextIndex = letters.length - 1;
+            else if (nextIndex >= letters.length) nextIndex = 0;
+
+            showPopup(letters[nextIndex]);
+        }
+
+        function showPopup(letter) {
+        var audioElement = document.getElementById("audioElement");
+        if (audioElement) {
+            audioElement.pause();
+            audioElement.load();
+        }
+        var blurBackground = document.getElementById("blurBackground");
+        var popup = document.getElementById("popup");
+        document.getElementById("selectedLetter").textContent = letter;
+        blurBackground.style.display = "block";
+        popup.style.display = "block";
+
+
+        var nama = document.getElementById("nama");
+        var audioElement = document.getElementById("audioElement");
+        var letterImage = document.getElementById("letterImage");
+
+    // Set the source of the audio element based on the clicked letter using switch statement
+        switch (letter) {
+            case 'A':
+                audioElement.src = 'audio/A.mpeg';
+                letterImage.src = 'img/ayam.png';
+                nama.innerHTML="Ayam";
+                break;
+            case 'B':
+                audioElement.src = 'audio/B.mpeg';
+                letterImage.src = 'img/bebek.png';
+                nama.innerHTML="Bebek";
+                break;
+            case 'C':
+                audioElement.src = 'audio/C.mp3';
+                letterImage.src = 'img/coklat.png';
+                nama.innerHTML="Coklat";
+                break;
+            case 'D':
+                audioElement.src = 'audio/D.mpeg';
+                letterImage.src = 'img/domba.png';
+                nama.innerHTML="Domba";
+                break;
+            case 'E':
+                audioElement.src = 'audio/E.mpeg';
+                letterImage.src = 'img/elang.png';
+                nama.innerHTML="Elang";
+                break;
+            case 'F':
+                audioElement.src = 'audio/F.mp3';
+                letterImage.src = 'img/foto.png';
+                nama.innerHTML="Foto";
+                break;
+            case 'G':
+                audioElement.src = 'audio/G.mpeg';
+                letterImage.src = 'img/gajah.png';
+                nama.innerHTML="Gajah";
+                break;
+            case 'H':
+                audioElement.src = 'audio/H.mp3';
+                letterImage.src = 'img/hantu.png';
+                nama.innerHTML="Hantu";
+                break;
+            case 'I':
+                audioElement.src = 'audio/I.mpeg';
+                letterImage.src = 'img/ikan.png';
+                nama.innerHTML="Ikan";
+                break;
+            case 'J':
+                audioElement.src = 'audio/J.mpeg';
+                letterImage.src = 'img/jerapah2.png';
+                nama.innerHTML="Jerapah";
+                break;
+            case 'K':
+                audioElement.src = 'audio/K.mpeg';
+                letterImage.src = 'img/kuda.png';
+                nama.innerHTML="Kuda";
+                break;
+            case 'L':
+                audioElement.src = 'audio/L.mpeg';
+                letterImage.src = 'img/lebah.png';
+                nama.innerHTML="Lebah";
+                break;
+            case 'M':
+                audioElement.src = 'audio/M.mpeg';
+                letterImage.src = 'img/monyet.png';
+                nama.innerHTML="Monyet";
+                break;
+            case 'N':
+                audioElement.src = 'audio/N.mp3';
+                letterImage.src = 'img/nanas.png';
+                nama.innerHTML="Nanas";
+                break;
+            case 'O':
+                audioElement.src = 'audio/O.mpeg';
+                letterImage.src = 'img/orangutan.png';
+                nama.innerHTML="Orangutan";
+                break;
+            case 'P':
+                audioElement.src = 'audio/P.mpeg';
+                letterImage.src = 'img/panda.png';
+                nama.innerHTML="Panda";
+                break;
+            case 'Q':
+                audioElement.src = 'audio/Q.mp3';
+                letterImage.src = 'img/quran.png';
+                nama.innerHTML="Quran";
+                break;
+            case 'R':
+                audioElement.src = 'audio/R.mpeg';
+                letterImage.src = 'img/rubah.png';
+                nama.innerHTML="Rubah";
+                break;
+            case 'S':
+                audioElement.src = 'audio/S.mpeg';
+                letterImage.src = 'img/singa.png';
+                nama.innerHTML="Singa";
+                break;
+            case 'T':
+                audioElement.src = 'audio/T.mpeg';
+                letterImage.src = 'img/tupai.png';
+                nama.innerHTML="Tupai";
+                break;
+            case 'U':
+                audioElement.src = 'audio/U.mpeg';
+                letterImage.src = 'img/unta.png';
+                nama.innerHTML="Unta";
+                break;
+            case 'V':
+                audioElement.src = 'audio/V.mp3';
+                letterImage.src = 'img/vasbunga.png';
+                nama.innerHTML="Vas Bunga";
+                break;
+            case 'W':
+                audioElement.src = 'audio/W.mp3';
+                letterImage.src = 'img/wortel.png';
+                nama.innerHTML="Wortel";
+                break;
+            case 'X':
+                audioElement.src = 'audio/X.mp3';
+                letterImage.src = 'img/xilofon.png';
+                nama.innerHTML="Xilofon";
+                break;
+            case 'Y':
+                audioElement.src = 'audio/Y.mp3';
+                letterImage.src = 'img/yoyo.png';
+                nama.innerHTML="Yoyo";
+                break;
+            case 'Z':
+                audioElement.src = 'audio/Z.mpeg';
+                letterImage.src = 'img/zabra.png';
+                nama.innerHTML="Zebra";
+                break;
+    }
+
+    // Play the audio
+    audioElement.play();
+}
+// Function to close popup
+function closePopup() {
+    // Get the blur background element
+    var blurBackground = document.getElementById("blurBackground");
+    // Get the popup element
+    var popup = document.getElementById("popup");
+    // Hide the blur background
+    blurBackground.style.display = "none";
+    // Hide the popup
+    popup.style.display = "none";
+
+    // Get the audio element
+    var audioElement = document.getElementById("audioElement");
+    // Pause the audio
+    audioElement.pause();
+}
+    </script>
+</body>
+</html>
+
